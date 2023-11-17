@@ -1,4 +1,5 @@
 import './App.css'
+import { sampleProducts } from './data'
 
 function App() {
   return (
@@ -6,7 +7,15 @@ function App() {
       <div>
         <header>Airneis</header>
       </div>
-      <main></main>
+      <main>
+        <ul>
+          {sampleProducts.map((product) => (
+            <li>
+              <h2>{product.name}</h2>
+            </li>
+          ))}
+        </ul>
+      </main>
       <footer>Tous droits réservés</footer>
     </>
   )
