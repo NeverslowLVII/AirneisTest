@@ -1,5 +1,6 @@
 import { Product } from './types/Product'
 
+// Produits d'exemple
 export const sampleProducts: Product[] = [
   {
     name: 'Canapé 3 places',

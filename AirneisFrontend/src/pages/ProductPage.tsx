@@ -7,36 +7,47 @@ import { useGetProductDetailsBySlugQuery } from '../hooks/productHook'
 import { ApiError } from '../types/APIError'
 import { getError } from '../utils'
 
+// Page produit
 export default function ProductPage() {
-  const params = useParams()
-  const { slug } = params
+  // Récupération du slug du produit
+  const { slug } = useParams()
+  // Appel de l'API pour obtenir les détails du produit
   const {
     data: product,
     isLoading,
     error,
   } = useGetProductDetailsBySlugQuery(slug!)
 
+  // Gestion des différents états de la requête
   return isLoading ? (
+    // Chargement
     <LoadingBox />
   ) : error ? (
+    // Erreur
     <MessageBox variant="danger">{getError(error as ApiError)}</MessageBox>
   ) : !product ? (
+    // Produit non trouvé
     <MessageBox variant="danger">Product Not Found</MessageBox>
   ) : (
+    // Affichage du produit
     <div>
       <Row>
         <Col md={6}>
+          {/* // Image du produit */}
           <img className="large" src={product.image} alt={product.name}></img>
         </Col>
         <Col md={3}>
           <ListGroup variant="flush">
             <ListGroup.Item>
+              {/* // Titre du produit */}
               <Helmet>
                 <title>{product.name}</title>
               </Helmet>
               <h1>{product.name}</h1>
             </ListGroup.Item>
+            {/* // Prix du produit */}
             <ListGroup.Item>Price : ${product.price}</ListGroup.Item>
+            {/* // Description du produit */}
             <ListGroup.Item>
               Description:
               <p>{product.description}</p>
@@ -49,17 +60,21 @@ export default function ProductPage() {
               <ListGroup variant="flush">
                 <ListGroup.Item>
                   <Row>
+                    {/* // Prix du produit */}
                     <Col>Price:</Col>
                     <Col>${product.price}</Col>
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Row>
+                    {/* // Statut du produit */}
                     <Col>Status:</Col>
                     <Col>
                       {product.countInStock > 0 ? (
+                        // En stock
                         <Badge bg="success">In Stock</Badge>
                       ) : (
+                        // Indisponible
                         <Badge bg="danger">Unavailable</Badge>
                       )}
                     </Col>
@@ -68,6 +83,7 @@ export default function ProductPage() {
                 {product.countInStock > 0 && (
                   <ListGroup.Item>
                     <div className="d-grid">
+                      {/* // Bouton Ajouter au panier */}
                       <Button variant="primary">Add to Cart</Button>
                     </div>
                   </ListGroup.Item>

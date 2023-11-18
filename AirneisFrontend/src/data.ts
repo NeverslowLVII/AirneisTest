@@ -1,7 +1,9 @@
 import { Product } from './types/Product'
 
+// Exemples de produits
 export const sampleProducts: Product[] = [
   {
+    // Canapé 3 places
     name: 'Canapé 3 places',
     slug: 'canape-3-places',
     image: '../public/images/blue-3-seater-sofa.png',
@@ -14,6 +16,7 @@ export const sampleProducts: Product[] = [
     numReviews: 12,
   },
   {
+    // Canapé 2 places
     name: 'Canapé 2 places',
     slug: 'canape-2-places',
     image: '../public/images/red-2-seater-sofa-in-living-room.png',
@@ -26,6 +29,7 @@ export const sampleProducts: Product[] = [
     numReviews: 8,
   },
   {
+    // Canapé 1 place
     name: 'Canapé 1 place',
     slug: 'canape-1-place',
     image: '../public/images/single-seat-green-sofa-in-living-room.png',
@@ -38,6 +42,7 @@ export const sampleProducts: Product[] = [
     numReviews: 12,
   },
   {
+    // Table basse
     name: 'Table basse',
     slug: 'table-basse',
     image: '../public/images/modern-brown-coffee-table (1).png',

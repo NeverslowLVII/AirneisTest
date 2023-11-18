@@ -1,43 +1,50 @@
-import React from 'react'
+import React from 'react' // Importation: React
 
 type AppState = {
-  mode: string
+  // Type: État de l'application
+  mode: string // Mode: Chaîne de caractères
 }
 
 const initialState: AppState = {
-  mode: localStorage.getItem('mode')
-    ? localStorage.getItem('mode')
-    : window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? 'dark'
-    : 'light',
+  // État initial: État de l'application
+  mode: localStorage.getItem('mode') // Mode: Obtenir de la mémoire locale
+    ? localStorage.getItem('mode') // Si existe: Obtenir de la mémoire locale
+    : window.matchMedia && // Sinon: Vérifier les préférences du système
+      window.matchMedia('(prefers-color-scheme: dark)').matches // Si sombre: Vrai
+    ? 'dark' // Si vrai: Sombre
+    : 'light', // Sinon: Clair
 }
 
-type Action = { type: 'SWITCH_MODE' }
+type Action = { type: 'SWITCH_MODE' } // Type: Action
 
 function reducer(state: AppState, action: Action): AppState {
-  switch (action.type) {
-    case 'SWITCH_MODE':
-      return { mode: state.mode === 'light' ? 'dark' : 'light' }
-    default:
-      return state
+  // Fonction: Réducteur
+  switch (
+    action.type // Selon le type d'action
+  ) {
+    case 'SWITCH_MODE': // Si 'SWITCH_MODE'
+      return { mode: state.mode === 'light' ? 'dark' : 'light' } // Retourner: Nouveau mode
+    default: // Par défaut
+      return state // Retourner: État actuel
   }
 }
 
-const defaultDispatch: React.Dispatch<Action> = () => initialState
+const defaultDispatch: React.Dispatch<Action> = () => initialState // Dispatch par défaut: Retourner l'état initial
 
 const Store = React.createContext({
-  state: initialState,
-  dispatch: defaultDispatch,
+  // Créer un contexte
+  state: initialState, // État: État initial
+  dispatch: defaultDispatch, // Dispatch: Dispatch par défaut
 })
 
 function StoreProvider(props: React.PropsWithChildren<{}>) {
-  const [state, dispatch] = React.useReducer<React.Reducer<AppState, Action>>(
-    reducer,
-    initialState
+  // Fonction: Fournisseur de magasin
+  const [state, dispatch] = React.useReducer<React.Reducer<AppState, Action>>( // Utiliser un réducteur
+    reducer, // Réducteur
+    initialState // État initial
   )
 
-  return <Store.Provider value={{ state, dispatch }} {...props} />
+  return <Store.Provider value={{ state, dispatch }} {...props} /> // Retourner: Fournisseur de magasin
 }
 
-export { Store, StoreProvider }
+export { Store, StoreProvider } // Exportation: Magasin, Fournisseur de magasin

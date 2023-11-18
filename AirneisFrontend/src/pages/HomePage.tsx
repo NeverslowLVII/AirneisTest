@@ -7,18 +7,27 @@ import { useGetProductsQuery } from '../hooks/productHook'
 import { getError } from '../utils'
 import { APIError } from '../types/APIError'
 
+// Page d'accueil
 export default function HomePage() {
+  // Récupération des produits
   const { data: products, error, isLoading } = useGetProductsQuery()
+  // Chargement en cours ?
   return isLoading ? (
+    // Affichage de la boîte de chargement
     <LoadingBox />
   ) : error ? (
+    // Erreur ? Affichage du message d'erreur
     <MessageBox variant="danger">{getError(error as APIError)}</MessageBox>
   ) : (
+    // Affichage des produits
     <Row>
+      {/* // Titre de la page */}
       <Helmet>
         <title>Airneis | Home</title>
       </Helmet>
+      {/* // Boucle sur les produits */}
       {products!.map((product) => (
+        // Affichage de chaque produit
         <Col key={product.slug} sm={6} md={4} lg={3}>
           <ProductItem product={product} />
         </Col>

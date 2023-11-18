@@ -1,3 +1,4 @@
+// Définition du produit
 export type Product = {
   name: string
   slug: string
