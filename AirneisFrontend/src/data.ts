@@ -40,7 +40,7 @@ export const sampleProducts: Product[] = [
   {
     name: 'Table basse',
     slug: 'table-basse',
-    image: '../public/images/modern-brown-coffee-table.png',
+    image: '../public/images/modern-brown-coffee-table (1).png',
     category: 'Tables',
     brand: 'Airneis',
     price: 80,
