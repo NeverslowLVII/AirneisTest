@@ -1,4 +1,4 @@
-export declare type APIError = {
+export declare type ApiError = {
   message: string
   response: {
     data: {
