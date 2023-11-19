@@ -4,7 +4,8 @@ import { Card, Button } from 'react-bootstrap'
 import { useContext } from 'react'
 import { Store } from '../Store'
 import { CartItem } from '../types/Cart'
-import { ConvertProductToCartItem } from '../utils'
+import { convertProductToCartItem } from '../utils'
+import { toast } from 'react-toastify'
 
 // Définition du produit
 function ProductItem({ product }: { product: Product }) {
@@ -21,6 +22,7 @@ function ProductItem({ product }: { product: Product }) {
       return
     }
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } })
+    toast.success('Product added to cart')
   }
   return (
     // Carte du produit
@@ -50,7 +52,7 @@ function ProductItem({ product }: { product: Product }) {
         ) : (
           // Bouton pour ajouter le produit au panier
           <Button
-            onClick={() => addToCartHandler(ConvertProductToCartItem(product))}
+            onClick={() => addToCartHandler(convertProductToCartItem(product))}
           >
             Add to Cart
           </Button>

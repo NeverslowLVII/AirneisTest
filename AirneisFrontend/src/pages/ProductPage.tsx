@@ -6,6 +6,11 @@ import MessageBox from '../components/MessageBox'
 import { useGetProductDetailsBySlugQuery } from '../hooks/productHook'
 import { ApiError } from '../types/APIError'
 import { getError } from '../utils'
+import { useContext } from 'react'
+import { Store } from '../Store'
+import { toast } from 'react-toastify'
+import { convertProductToCartItem } from '../utils'
+import { useNavigate } from 'react-router-dom'
 
 // Page produit
 export default function ProductPage() {
@@ -18,6 +23,25 @@ export default function ProductPage() {
     error,
   } = useGetProductDetailsBySlugQuery(slug!)
 
+  const { state, dispatch } = useContext(Store)
+  const { cart } = state
+
+  const navigate = useNavigate()
+
+  const addToCartHandler = () => {
+    const existItem = cart.cartItems.find((x) => x._id === product!._id)
+    const quantity = existItem ? existItem.quantity + 1 : 1
+    if (product!.countInStock < quantity) {
+      toast.warn('Sorry. Product is out of stock')
+      return
+    }
+    dispatch({
+      type: 'CART_ADD_ITEM',
+      payload: { ...convertProductToCartItem(product!), quantity },
+    })
+    toast.success('Product added to cart')
+    navigate('/cart')
+  }
   // Gestion des différents états de la requête
   return isLoading ? (
     // Chargement
@@ -84,7 +108,9 @@ export default function ProductPage() {
                   <ListGroup.Item>
                     <div className="d-grid">
                       {/* // Bouton Ajouter au panier */}
-                      <Button variant="primary">Add to Cart</Button>
+                      <Button onClick={addToCartHandler} variant="primary">
+                        Add to Cart
+                      </Button>
                     </div>
                   </ListGroup.Item>
                 )}

@@ -9,7 +9,7 @@ export const getError = (error: ApiError) => {
     : error.message // Résultat: Message de l'Erreur
 }
 
-export const ConvertProductToCartItem = (product: Product): CartItem => {
+export const convertProductToCartItem = (product: Product): CartItem => {
   const cartItem: CartItem = {
     _id: product._id,
     name: product.name,
