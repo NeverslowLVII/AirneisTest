@@ -3,7 +3,7 @@ import { modelOptions, prop, getModelForClass } from '@typegoose/typegoose'
 // Définition du modèle de produit avec des options de schéma pour les timestamps
 @modelOptions({ schemaOptions: { timestamps: true } })
 export class Product {
-  public _id!: string // Identifiant unique du produit
+  public _id?: string // Identifiant unique du produit
 
   @prop({ required: true }) // Nom du produit
   public name!: string
