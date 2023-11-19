@@ -1,9 +1,27 @@
 import { Product } from '../types/Product'
 import { Link } from 'react-router-dom'
 import { Card, Button } from 'react-bootstrap'
+import { useContext } from 'react'
+import { Store } from '../Store'
+import { CartItem } from '../types/Cart'
+import { ConvertProductToCartItem } from '../utils'
 
 // Définition du produit
 function ProductItem({ product }: { product: Product }) {
+  const { state, dispatch } = useContext(Store)
+  const {
+    cart: { cartItems },
+  } = state
+
+  const addToCartHandler = async (item: CartItem) => {
+    const existItem = cartItems.find((x) => x._id === item._id)
+    const quantity = existItem ? existItem.quantity + 1 : 1
+    if (product.countInStock < quantity) {
+      alert('Sorry, product is out of stock')
+      return
+    }
+    dispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } })
+  }
   return (
     // Carte du produit
     <Card>
@@ -31,7 +49,11 @@ function ProductItem({ product }: { product: Product }) {
           </Button>
         ) : (
           // Bouton pour ajouter le produit au panier
-          <Button>Add to Cart</Button>
+          <Button
+            onClick={() => addToCartHandler(ConvertProductToCartItem(product))}
+          >
+            Add to Cart
+          </Button>
         )}
       </Card.Body>
     </Card>

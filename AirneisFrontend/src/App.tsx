@@ -1,5 +1,5 @@
-import { Container, Navbar, NavbarBrand, Nav } from 'react-bootstrap'
-import { Outlet } from 'react-router-dom'
+import { Container, Navbar, NavbarBrand, Nav, Badge } from 'react-bootstrap'
+import { Outlet, Link } from 'react-router-dom'
 import { Store } from './Store'
 import { useContext } from 'react'
 import { useEffect } from 'react'
@@ -10,7 +10,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 function App() {
   // Utilisation du contexte du magasin
   const {
-    state: { mode },
+    state: { mode, cart },
     dispatch,
   } = useContext(Store)
 
@@ -49,12 +49,17 @@ function App() {
                 ></i>
               </Button>
               {/* // Lien vers le panier */}
-              <a href="/cart" className="nav-link">
-                Panier
-              </a>
+              <Link to="/cart" className="nav-link">
+                Cart
+                {cart.cartItems.length > 0 && (
+                  <Badge pill bg="danger">
+                    {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                  </Badge>
+                )}
+              </Link>
               {/* // Lien vers la connexion */}
               <a href="/signin" className="nav-link">
-                Connexion
+                Sign In
               </a>
             </Nav>
           </Navbar>

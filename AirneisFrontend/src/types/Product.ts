@@ -1,5 +1,6 @@
 // Définition du produit
 export type Product = {
+  _id: string
   name: string
   slug: string
   image: string
@@ -8,6 +9,4 @@ export type Product = {
   price: number
   countInStock: number
   description: string
-  rating: number
-  numReviews: number
 }
