@@ -35,6 +35,7 @@ const initialState: AppState = {
 type Action =
   | { type: 'SWITCH_MODE' }
   | { type: 'CART_ADD_ITEM'; payload: CartItem } // Type: Action
+  | { type: 'CART_REMOVE_ITEM'; payload: CartItem } // Type: Action
 
 function reducer(state: AppState, action: Action): AppState {
   // Fonction: Réducteur
@@ -56,6 +57,14 @@ function reducer(state: AppState, action: Action): AppState {
 
       localStorage.setItem('cartItems', JSON.stringify(cartItems)) // Panier: Définir le panier dans la mémoire locale
       return { ...state, cart: { ...state.cart, cartItems } } // Retourner: Nouveau panier
+    case 'CART_REMOVE_ITEM': {
+      const cartItems = state.cart.cartItems.filter(
+        (item: CartItem) => item._id !== action.payload._id
+      ) // Articles du panier: Filtrer les articles du panier
+      localStorage.setItem('cartItems', JSON.stringify(cartItems)) // Panier: Définir le panier dans la mémoire locale
+      return { ...state, cart: { ...state.cart, cartItems } } // Retourner: Nouveau panier
+    }
+
     default:
       return state
   }
