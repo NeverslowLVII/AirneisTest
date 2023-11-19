@@ -15,16 +15,20 @@ import { HelmetProvider } from 'react-helmet-async'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { StoreProvider } from './Store'
+import CartPage from './pages/CartPage'
 
 const router = createBrowserRouter(
   // Création: Router
   createRoutesFromElements(
+    // Route: App
     <Route path="/" element={<App />}>
       {' '}
-      // Route: App
-      <Route index={true} path="/" element={<HomePage />} /> // Route: HomePage
-      <Route path="product/:slug" element={<ProductPage />} /> // Route:
-      ProductPage
+      {/*// Route: HomePage */}
+      <Route index={true} path="/" element={<HomePage />} />{' '}
+      {/*// Route:ProductPage*/}
+      <Route path="product/:slug" element={<ProductPage />} />{' '}
+      {/*// Route:CartPage*/}
+      <Route path="cart" element={<CartPage />} />{' '}
       {/* <Route path="dashboard" element={<Dashboard />} /> */}
       {/* ... etc. */}
     </Route>
