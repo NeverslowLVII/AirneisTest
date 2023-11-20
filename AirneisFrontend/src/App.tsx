@@ -1,4 +1,11 @@
-import { Container, Navbar, NavbarBrand, Nav, Badge } from 'react-bootstrap'
+import {
+  Container,
+  Navbar,
+  NavbarBrand,
+  Nav,
+  Badge,
+  NavDropdown,
+} from 'react-bootstrap'
 import { Outlet, Link } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -13,7 +20,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 function App() {
   // Utilisation du contexte du magasin
   const {
-    state: { mode, cart },
+    state: { mode, cart, userInfo },
     dispatch,
   } = useContext(Store)
 
@@ -25,6 +32,14 @@ function App() {
   // Gestionnaire pour changer de mode
   const switchModeHandler = () => {
     dispatch({ type: 'SWITCH_MODE' })
+  }
+  const signoutHandler = () => {
+    dispatch({ type: 'USER_SIGNOUT' })
+    localStorage.removeItem('userInfo')
+    localStorage.removeItem('cartItems')
+    localStorage.removeItem('shippingAddress')
+    localStorage.removeItem('paymentMethod')
+    window.location.href = '/signin'
   }
   // Rendu de l'application
   return (
@@ -64,10 +79,23 @@ function App() {
                   </Badge>
                 )}
               </Link>
-              {/* // Lien vers la connexion */}
-              <a href="/signin" className="nav-link">
-                Sign In
-              </a>
+              {userInfo ? ( //si unserInfo existe
+                // affiche le nom de l'utilisateur dans le dropdown
+                <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
+                  <Link
+                    className="dropdown-item"
+                    to="#signout"
+                    onClick={signoutHandler}
+                  >
+                    Sign Out
+                  </Link>
+                </NavDropdown>
+              ) : (
+                // sinon affiche le lien vers la page de connexion
+                <Link className="nav-link" to="/signin">
+                  Sign In
+                </Link>
+              )}
             </Nav>
           </Navbar>
         </header>

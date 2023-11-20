@@ -1,13 +1,18 @@
 import React from 'react' // Importation: React
 import { Cart, CartItem } from './types/Cart' // Importation: Panier
+import { UserInfo } from './types/UserInfo' // Importation: Utilisateur
 
 type AppState = {
   // Type: État de l'application
   mode: string // Mode: Chaîne de caractères
   cart: Cart // Panier: Panier
+  userInfo?: UserInfo
 }
 
 const initialState: AppState = {
+  userInfo: localStorage.getItem('userInfo') // Utilisateur: Obtenir de la mémoire locale
+    ? JSON.parse(localStorage.getItem('userInfo')!) // Si existe: Obtenir de la mémoire locale
+    : null, // Sinon: Indéfini
   // État initial: État de l'application
   mode: localStorage.getItem('mode') // Mode: Obtenir de la mémoire locale
     ? localStorage.getItem('mode') // Si existe: Obtenir de la mémoire locale
@@ -36,6 +41,8 @@ type Action =
   | { type: 'SWITCH_MODE' }
   | { type: 'CART_ADD_ITEM'; payload: CartItem } // Type: Action
   | { type: 'CART_REMOVE_ITEM'; payload: CartItem } // Type: Action
+  | { type: 'USER_SIGNIN'; payload: UserInfo } // Type: Action
+  | { type: 'USER_SIGNOUT' } // Type: Action
 
 function reducer(state: AppState, action: Action): AppState {
   // Fonction: Réducteur
@@ -65,8 +72,34 @@ function reducer(state: AppState, action: Action): AppState {
       return { ...state, cart: { ...state.cart, cartItems } } // Retourner: Nouveau panier
     }
 
+    case 'USER_SIGNIN':
+      return { ...state, userInfo: action.payload } // Retourner: Nouvel utilisateur
+
     default:
       return state
+    case 'USER_SIGNOUT':
+      return {
+        mode:
+          window.matchMedia &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light',
+        cart: {
+          cartItems: [],
+          paymentMethod: 'Card',
+          shippingAddress: {
+            fullName: '',
+            address: '',
+            city: '',
+            postalCode: '',
+            country: '',
+          },
+          itemsPrice: 0,
+          shippingPrice: 0,
+          taxPrice: 0,
+          totalPrice: 0,
+        },
+      }
   }
 }
 

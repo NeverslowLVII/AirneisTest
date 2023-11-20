@@ -16,6 +16,7 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { StoreProvider } from './Store'
 import CartPage from './pages/CartPage'
+import SigninPage from './pages/SigninPage'
 
 const router = createBrowserRouter(
   // Création: Router
@@ -28,7 +29,9 @@ const router = createBrowserRouter(
       {/*// Route:ProductPage*/}
       <Route path="product/:slug" element={<ProductPage />} />{' '}
       {/*// Route:CartPage*/}
-      <Route path="cart" element={<CartPage />} />{' '}
+      <Route path="cart" element={<CartPage />} />
+      {/*// ajotue de connexion dans la liste de routes (/signin) */}
+      <Route path="signin" element={<SigninPage />} />{' '}
       {/* <Route path="dashboard" element={<Dashboard />} /> */}
       {/* ... etc. */}
     </Route>
