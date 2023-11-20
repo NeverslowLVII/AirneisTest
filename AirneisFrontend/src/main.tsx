@@ -18,6 +18,7 @@ import { StoreProvider } from './Store'
 import CartPage from './pages/CartPage'
 import SigninPage from './pages/SigninPage'
 import SignupPage from './pages/SignupPage.tsx'
+import ShippingAdressPage from './pages/ShippingAdressPage.tsx'
 
 const router = createBrowserRouter(
   // Création: Router
@@ -35,6 +36,7 @@ const router = createBrowserRouter(
       <Route path="signin" element={<SigninPage />} />{' '}
       {/*// ajout de register dans la liste de routes (/signup) */}
       <Route path="signup" element={<SignupPage />} />{' '}
+      <Route path="shipping" element={<ShippingAdressPage />} />
       {/* <Route path="dashboard" element={<Dashboard />} /> */}
       {/* ... etc. */}
     </Route>

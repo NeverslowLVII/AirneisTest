@@ -110,7 +110,7 @@ function App() {
         {/* // Pied de page */}
         <footer>
           {/* // Texte du pied de page */}
-          <div className="text-center">Tous droits réservés</div>
+          <div className="text-center">All rights reserved</div>
         </footer>
       </div>
     </>
