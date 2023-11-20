@@ -44,6 +44,7 @@ type Action =
   | { type: 'USER_SIGNIN'; payload: UserInfo } // Type: Action
   | { type: 'USER_SIGNOUT' } // Type: Action
   | { type: 'SAVE_SHIPPING_ADDRESS'; payload: ShippingAddress } // Type: Action
+  | { type: 'SAVE_PAYMENT_METHOD'; payload: string } // Type: Action
 
 function reducer(state: AppState, action: Action): AppState {
   // Fonction: Réducteur
@@ -51,6 +52,7 @@ function reducer(state: AppState, action: Action): AppState {
     action.type // Selon le type d'action
   ) {
     case 'SWITCH_MODE':
+      localStorage.setItem('mode', state.mode === 'light' ? 'dark' : 'light') // Mode: Définir le mode dans la mémoire locale
       return { ...state, mode: state.mode === 'light' ? 'dark' : 'light' } // Retourner: Nouveau mode de couleur
     case 'CART_ADD_ITEM':
       const newItem = action.payload // Nouvel article: Charge utile
@@ -102,6 +104,11 @@ function reducer(state: AppState, action: Action): AppState {
       return {
         ...state,
         cart: { ...state.cart, shippingAddress: action.payload },
+      }
+    case 'SAVE_PAYMENT_METHOD':
+      return {
+        ...state,
+        cart: { ...state.cart, paymentMethod: action.payload },
       }
     default:
       return state
