@@ -17,7 +17,7 @@ const initialState: AppState = {
   mode: localStorage.getItem('mode') // Mode: Obtenir de la mémoire locale
     ? localStorage.getItem('mode') // Si existe: Obtenir de la mémoire locale
     : window.matchMedia && // Sinon: Vérifier les préférences du système
-      window.matchMedia('(prefers-color-scheme: dark)').matches // Si sombre: Vrai
+      window.matchMedia('(prefers-color-scheme: light)').matches // Si sombre: Vrai
     ? 'dark' // Si vrai: Sombre
     : 'light', // Sinon: Clair
   cart: {
@@ -81,7 +81,7 @@ function reducer(state: AppState, action: Action): AppState {
       return {
         mode:
           window.matchMedia &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches
+          window.matchMedia('(prefers-color-scheme: light)').matches
             ? 'dark'
             : 'light',
         cart: {

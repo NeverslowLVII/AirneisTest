@@ -17,6 +17,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { StoreProvider } from './Store'
 import CartPage from './pages/CartPage'
 import SigninPage from './pages/SigninPage'
+import SignupPage from './pages/SignupPage.tsx'
 
 const router = createBrowserRouter(
   // Création: Router
@@ -30,8 +31,10 @@ const router = createBrowserRouter(
       <Route path="product/:slug" element={<ProductPage />} />{' '}
       {/*// Route:CartPage*/}
       <Route path="cart" element={<CartPage />} />
-      {/*// ajotue de connexion dans la liste de routes (/signin) */}
+      {/*// ajout de connexion dans la liste de routes (/signin) */}
       <Route path="signin" element={<SigninPage />} />{' '}
+      {/*// ajout de register dans la liste de routes (/signup) */}
+      <Route path="signup" element={<SignupPage />} />{' '}
       {/* <Route path="dashboard" element={<Dashboard />} /> */}
       {/* ... etc. */}
     </Route>
