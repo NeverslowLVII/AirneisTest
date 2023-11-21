@@ -23,12 +23,12 @@ class Item {
   @prop({ required: true })
   public name!: string
   @prop({ required: true })
-  public quantity!: number
+  public quantity!: string
   @prop({ required: true })
-  public image!: string
+  public image!: number
   @prop({ required: true })
   public price!: number
-  @prop({ required: true })
+  @prop({ ref: Product })
   public product?: Ref<Product>
 }
 
@@ -47,14 +47,16 @@ modelOptions({ schemaOptions: { timestamps: true } })
 export class Order {
   public _id!: string
   @prop()
-  public orederItems!: Item[]
+  public orderItems!: Item[]
   @prop()
   public shippingAddress?: ShippingAddress
 
   @prop({ ref: User })
   public user?: Ref<User>
+
   @prop({ required: true })
   public paymentMethod!: string
+
   @prop()
   public paymentResult?: PaymentResult
 
@@ -69,11 +71,11 @@ export class Order {
   @prop({ required: true, default: false })
   public isPaid!: boolean
   @prop()
-  public paidAt?: Date
+  public paidAt!: Date
   @prop({ required: true, default: false })
   public isDelivered!: boolean
   @prop()
-  public deliveredAt?: Date
+  public deliveredAt!: Date
 }
 
 export const OrderModel = getModelForClass(Order)
