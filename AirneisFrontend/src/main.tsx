@@ -20,6 +20,7 @@ import SigninPage from './pages/SigninPage'
 import SignupPage from './pages/SignupPage.tsx'
 import ShippingAdressPage from './pages/ShippingAdressPage.tsx'
 import PaymentMethodPage from './pages/PaymentMethodPage.tsx'
+import ProtectedRoute from './components/ProtectedRoute.tsx'
 
 const router = createBrowserRouter(
   // Création: Router
@@ -37,9 +38,13 @@ const router = createBrowserRouter(
       <Route path="signin" element={<SigninPage />} />{' '}
       {/*// ajout de register dans la liste de routes (/signup) */}
       <Route path="signup" element={<SignupPage />} />{' '}
-      {/*// ajout de l'adress dans la liste de routes (/shipping) */}
-      <Route path="shipping" element={<ShippingAdressPage />} />
-      <Route path="payment" element={<PaymentMethodPage />} />
+      {/*// ajout de routes secrètes invisibles à l'utilisateur */}
+      <Route path="" element={<ProtectedRoute />}>
+        {/*// ajout de l'adress dans la liste de routes (/shipping) */}
+        <Route path="shipping" element={<ShippingAdressPage />} />
+        {/*// ajout de la méthode de paiement dans la liste de routes (/payment) */}
+        <Route path="payment" element={<PaymentMethodPage />} />
+      </Route>
       {/* <Route path="dashboard" element={<Dashboard />} /> */}
       {/* ... etc. */}
     </Route>

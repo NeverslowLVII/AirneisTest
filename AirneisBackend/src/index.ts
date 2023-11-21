@@ -5,6 +5,7 @@ import mongoose from 'mongoose'
 import { productRouter } from './routers/productRouter' // Importation: Routeur Produit
 import { seedRouter } from './routers/seedRouter'
 import { userRouter } from './routers/userRouter' // Importation: Routeur Utilisateur
+import { orderRouter } from './routers/orderRouter'
 
 dotenv.config() // Importation: Dotenv
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1/airneis' // Importation: URI MongoDB
@@ -29,6 +30,7 @@ app.use(express.urlencoded({ extended: true })) // Utilisation: URL Encoded
 app.use('/api/products', productRouter) // Utilisation: Routeur Produit
 app.use('/api/users', userRouter) // Utilisation: Routeur Utilisateur
 app.use('/api/seed', seedRouter) // Utilisation: Routeur Seed
+app.use('/api/orders', orderRouter) // Utilisation: Routeur Commande
 
 // Port d'écoute
 const PORT = 4000
