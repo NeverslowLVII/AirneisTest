@@ -11,5 +11,19 @@ const apiClient = axios.create({
   },
 })
 
+//when we send a request, before sending requests using APIclient interceptor, we can modify the request and in the header of request we want to put the bearer token to authenticate the user
+apiClient.interceptors.request.use(
+  async (config) => {
+    if (localStorage.getItem('userInfo'))
+      config.headers.Authorization = `Bearer ${
+        JSON.parse(localStorage.getItem('userInfo')!).token
+      }`
+    return config
+  },
+  (error) => {
+    Promise.reject(error)
+  }
+)
+
 // Exportation client API
 export default apiClient

@@ -21,6 +21,8 @@ import SignupPage from './pages/SignupPage.tsx'
 import ShippingAdressPage from './pages/ShippingAdressPage.tsx'
 import PaymentMethodPage from './pages/PaymentMethodPage.tsx'
 import ProtectedRoute from './components/ProtectedRoute.tsx'
+import PlaceOrderPage from './pages/PlaceOrderPage.tsx'
+import OrderPage from './pages/OrderPage.tsx'
 
 const router = createBrowserRouter(
   // Création: Router
@@ -44,6 +46,10 @@ const router = createBrowserRouter(
         <Route path="shipping" element={<ShippingAdressPage />} />
         {/*// ajout de la méthode de paiement dans la liste de routes (/payment) */}
         <Route path="payment" element={<PaymentMethodPage />} />
+        {/*// ajout de la commande dans la liste de routes (/placeorder) */}
+        <Route path="placeorder" element={<PlaceOrderPage />} />
+        {/*// ajout du récapitulatif de la commande dans la liste de routes (/order/:id) */}
+        <Route path="order/:id" element={<OrderPage />} />
       </Route>
       {/* <Route path="dashboard" element={<Dashboard />} /> */}
       {/* ... etc. */}

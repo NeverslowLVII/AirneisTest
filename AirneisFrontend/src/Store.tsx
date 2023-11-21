@@ -41,6 +41,7 @@ type Action =
   | { type: 'SWITCH_MODE' }
   | { type: 'CART_ADD_ITEM'; payload: CartItem } // Type: Action
   | { type: 'CART_REMOVE_ITEM'; payload: CartItem } // Type: Action
+  | { type: 'CART_CLEAR' } // Type: Action
   | { type: 'USER_SIGNIN'; payload: UserInfo } // Type: Action
   | { type: 'USER_SIGNOUT' } // Type: Action
   | { type: 'SAVE_SHIPPING_ADDRESS'; payload: ShippingAddress } // Type: Action
@@ -74,7 +75,11 @@ function reducer(state: AppState, action: Action): AppState {
       localStorage.setItem('cartItems', JSON.stringify(cartItems)) // Panier: Définir le panier dans la mémoire locale
       return { ...state, cart: { ...state.cart, cartItems } } // Retourner: Nouveau panier
     }
-
+    case 'CART_CLEAR':
+      return {
+        ...state,
+        cart: { ...state.cart, cartItems: [] },
+      }
     case 'USER_SIGNIN':
       return { ...state, userInfo: action.payload } // Retourner: Nouvel utilisateur
     case 'USER_SIGNOUT':
