@@ -1,3 +1,10 @@
+/**
+ * J'ai choisi d'utiliser Express et Typegoose pour construire cette API REST car ils offrent une excellente compatibilité avec TypeScript.
+ * Ce fichier, 'orderRouter.ts', gère les routes pour les commandes. Il contient deux routes principales : une pour obtenir une commande spécifique par son ID et une autre pour créer une nouvelle commande.
+ * La route 'GET /:id' renvoie les détails d'une commande spécifique. Elle nécessite une authentification.
+ * La route 'POST /' crée une nouvelle commande avec les détails fournis dans le corps de la requête. Elle nécessite également une authentification.
+ */
+
 import express, { Request, Response } from 'express'
 import asynchandler from 'express-async-handler'
 import { isAuth } from '../utils'

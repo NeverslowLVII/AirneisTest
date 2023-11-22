@@ -1,11 +1,15 @@
+/**
+ * J'ai choisi d'utiliser TypeScript, Express et bcryptjs pour construire cette API REST car ils offrent une excellente compatibilité et des fonctionnalités robustes.
+ * Ce fichier, 'data.ts', contient des données d'échantillon pour les produits et les utilisateurs qui sont utilisées pour peupler la base de données lors de l'initialisation de l'application.
+ * Les produits et les utilisateurs sont définis avec leurs attributs respectifs, tels que le nom, l'image, la catégorie, la marque, le prix, le stock pour les produits et le nom, l'email, le mot de passe pour les utilisateurs.
+ */
+
 import { Product } from './models/product'
 import { User } from './models/user'
 import bcrypt from 'bcryptjs'
 
-// Exemples de produits
 export const sampleProducts: Product[] = [
   {
-    // Canapé 3 places
     name: 'MACLEOD',
     slug: 'macleod',
     image: '../public/images/blue-3-seater-sofa.png',
@@ -16,7 +20,6 @@ export const sampleProducts: Product[] = [
     description: 'Blue 3 seater sofa',
   },
   {
-    // Canapé 2 places
     name: 'NESSIE',
     slug: 'nessie',
     image: '../public/images/red-2-seater-sofa-in-living-room.png',
@@ -27,7 +30,6 @@ export const sampleProducts: Product[] = [
     description: 'Red 2 seater sofa',
   },
   {
-    // Canapé 1 place
     name: 'THISTLE',
     slug: 'thisle',
     image: '../public/images/single-seat-green-sofa-in-living-room.png',
@@ -38,7 +40,6 @@ export const sampleProducts: Product[] = [
     description: 'Green 1 seater sofa',
   },
   {
-    // Table basse
     name: 'GLEN',
     slug: 'glen',
     image: '../public/images/modern-brown-coffee-table (1).png',
@@ -100,14 +101,12 @@ export const sampleUsers: User[] = [
     isAdmin: true,
   },
   {
-    // Création d'un nouvel utilisateur
     name: 'User One',
     email: 'userone@example.com',
     password: bcrypt.hashSync('123456'),
     isAdmin: false,
   },
   {
-    // Création d'un autre utilisateur
     name: 'User Two',
     email: 'usertwo@example.com',
     password: bcrypt.hashSync('123456'),

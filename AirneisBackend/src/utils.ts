@@ -1,3 +1,10 @@
+/**
+ * J'ai choisi d'utiliser TypeScript, Express et jsonwebtoken pour construire cette API REST car ils offrent une excellente compatibilité et des fonctionnalités robustes.
+ * Ce fichier, 'utils.ts', contient des fonctions utilitaires pour générer et vérifier les tokens JWT.
+ * La fonction 'generateToken' prend un utilisateur comme argument et génère un token JWT qui est ensuite renvoyé.
+ * La fonction 'isAuth' est un middleware qui vérifie si un token est fourni dans les en-têtes de la requête. Si un token est présent, il est vérifié et les informations de l'utilisateur sont extraites et attachées à la requête.
+ */
+
 import { NextFunction, Request } from 'express'
 import { User } from './models/user'
 import jwt from 'jsonwebtoken'
@@ -32,7 +39,7 @@ export const isAuth = (req: Request, res: Response, next: NextFunction) => {
       isAdmin: boolean
       token: string
     }
-    next() //appel le middleware suivant
+    next()
   } else {
     res.status(401).send({ message: 'No Token' })
   }

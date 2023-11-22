@@ -1,3 +1,8 @@
+/**
+ * J'ai choisi d'utiliser Typegoose pour définir les modèles de notre application car il offre une excellente compatibilité avec TypeScript.
+ * Ce fichier définit le modèle de commande pour notre API REST. Il représente la structure des données que nous stockerons dans notre base de données MongoDB.
+ * Chaque commande contient des informations sur l'adresse de livraison, les articles commandés et le résultat du paiement.
+ */
 import { modelOptions, prop, getModelForClass, Ref } from '@typegoose/typegoose'
 import { Product } from './product'
 import { User } from './user'
