@@ -1,0 +1,13 @@
+{
+  "name": "airneistest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd AirneisBackend && npm install && npm run build && cd ../AirneisFrontend && npm install && npm run build",
+    "start": "TG_ALLOW_MIXED=ALLOW node AirneisBackend/build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

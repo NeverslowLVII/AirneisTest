@@ -81,7 +81,14 @@ function App() {
               </Link>
               {userInfo ? ( //si unserInfo existe
                 // affiche le nom de l'utilisateur dans le dropdown
-                <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
+                <NavDropdown
+                  title={userInfo.name}
+                  id="basic-nav-dropdown"
+                  className="dropdown-menu-start"
+                >
+                  <LinkContainer to="/orderhistory">
+                    <NavDropdown.Item>Order History</NavDropdown.Item>
+                  </LinkContainer>
                   <Link
                     className="dropdown-item"
                     to="#signout"

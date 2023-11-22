@@ -8,9 +8,18 @@
 import express, { Request, Response } from 'express'
 import asynchandler from 'express-async-handler'
 import { isAuth } from '../utils'
-import { OrderModel } from '../models/order'
+import { Order, OrderModel } from '../models/order'
 import { Product } from '../models/product'
 export const orderRouter = express.Router()
+
+orderRouter.get(
+  '/mine',
+  isAuth,
+  asynchandler(async (req: Request, res: Response) => {
+    const orders = await OrderModel.find({ user: req.user._id })
+    res.json(orders)
+  })
+)
 
 orderRouter.get(
   '/:id',
@@ -44,7 +53,7 @@ orderRouter.post(
         taxPrice: req.body.taxPrice,
         totalPrice: req.body.totalPrice,
         user: req.user._id,
-      })
+      } as Order)
       res.status(201).send({ message: 'Order Created', order: createOrder })
     }
   })

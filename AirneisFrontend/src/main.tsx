@@ -23,6 +23,7 @@ import PaymentMethodPage from './pages/PaymentMethodPage.tsx'
 import ProtectedRoute from './components/ProtectedRoute.tsx'
 import PlaceOrderPage from './pages/PlaceOrderPage.tsx'
 import OrderPage from './pages/OrderPage.tsx'
+import OrderHistoryPage from './pages/OrderHistoryPage'
 
 const router = createBrowserRouter(
   // Création: Router
@@ -50,6 +51,8 @@ const router = createBrowserRouter(
         <Route path="placeorder" element={<PlaceOrderPage />} />
         {/*// ajout du récapitulatif de la commande dans la liste de routes (/order/:id) */}
         <Route path="order/:id" element={<OrderPage />} />
+        {/*// ajout de l'historique de commande dans la liste de routes (/orderhistory) */}
+        <Route path="/orderhistory" element={<OrderHistoryPage />} />
       </Route>
       {/* <Route path="dashboard" element={<Dashboard />} /> */}
       {/* ... etc. */}

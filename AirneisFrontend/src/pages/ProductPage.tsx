@@ -48,7 +48,9 @@ export default function ProductPage() {
     <LoadingBox />
   ) : error ? (
     // Erreur
-    <MessageBox variant="danger">{getError(error as ApiError)}</MessageBox>
+    <MessageBox variant="danger">
+      {getError(error as unknown as ApiError)}
+    </MessageBox>
   ) : !product ? (
     // Produit non trouvé
     <MessageBox variant="danger">Product Not Found</MessageBox>

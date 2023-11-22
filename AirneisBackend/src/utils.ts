@@ -5,7 +5,7 @@
  * La fonction 'isAuth' est un middleware qui vérifie si un token est fourni dans les en-têtes de la requête. Si un token est présent, il est vérifié et les informations de l'utilisateur sont extraites et attachées à la requête.
  */
 
-import { NextFunction, Request } from 'express'
+import { NextFunction, Request, Response } from 'express'
 import { User } from './models/user'
 import jwt from 'jsonwebtoken'
 
@@ -24,7 +24,11 @@ export const generateToken = (user: User) => {
   )
 }
 
-export const isAuth = (req: Request, res: Response, next: NextFunction) => {
+export const isAuth = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void => {
   const { authorization } = req.headers
   if (authorization) {
     const token = authorization.slice(7, authorization.length) // Bearer XXXXX
@@ -41,6 +45,6 @@ export const isAuth = (req: Request, res: Response, next: NextFunction) => {
     }
     next()
   } else {
-    res.status(401).send({ message: 'No Token' })
+    ;(res as Response).status(401).send({ message: 'No Token' })
   }
 }

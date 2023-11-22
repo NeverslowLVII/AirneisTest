@@ -8,6 +8,7 @@ export type Order = {
   paymentMethod: string
   user: User
   createdAt: string
+  updatedAt: string
   isPaid: boolean
   paidAt: string
   isDelivered: boolean

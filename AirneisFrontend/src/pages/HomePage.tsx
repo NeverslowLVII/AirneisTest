@@ -5,7 +5,7 @@ import MessageBox from '../components/MessageBox'
 import ProductItem from '../components/ProductItem'
 import { useGetProductsQuery } from '../hooks/productHook'
 import { getError } from '../utils'
-import { APIError } from '../types/APIError'
+import { ApiError } from '../types/APIError'
 
 // Page d'accueil
 export default function HomePage() {
@@ -17,7 +17,9 @@ export default function HomePage() {
     <LoadingBox />
   ) : error ? (
     // Erreur ? Affichage du message d'erreur
-    <MessageBox variant="danger">{getError(error as APIError)}</MessageBox>
+    <MessageBox variant="danger">
+      {getError(error as unknown as ApiError)}
+    </MessageBox>
   ) : (
     // Affichage des produits
     <Row>

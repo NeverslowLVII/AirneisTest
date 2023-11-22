@@ -1,18 +1,13 @@
-import { useContext } from 'react'
 import { Card, Col, ListGroup, Row } from 'react-bootstrap'
 import { Helmet } from 'react-helmet-async'
 import { Link, useParams } from 'react-router-dom'
 import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
 import { useGetOrderDetailsQuery } from '../hooks/orderHooks'
-import { Store } from '../Store'
-import { ApiError } from '../types/ApiError'
+import { ApiError } from '../types/APIError'
 import { getError } from '../utils'
 
 export default function OrderPage() {
-  const { state } = useContext(Store)
-  const { userInfo } = state
-
   const params = useParams()
   const { id: orderId } = params
 
@@ -21,7 +16,9 @@ export default function OrderPage() {
   return isLoading ? (
     <LoadingBox></LoadingBox>
   ) : error ? (
-    <MessageBox variant="danger">{getError(error as ApiError)}</MessageBox>
+    <MessageBox variant="danger">
+      {getError(error as unknown as ApiError)}
+    </MessageBox>
   ) : !order ? (
     <MessageBox variant="danger">Order Not Found</MessageBox>
   ) : (
