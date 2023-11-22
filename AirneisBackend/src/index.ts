@@ -13,7 +13,6 @@ import { productRouter } from './routers/productRouter'
 import { seedRouter } from './routers/seedRouter'
 import { userRouter } from './routers/userRouter'
 import { orderRouter } from './routers/orderRouter'
-import { categoryRouter } from './routers/categoryRouter'
 
 dotenv.config()
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1/airneis'
@@ -39,7 +38,6 @@ app.use('/api/products', productRouter)
 app.use('/api/users', userRouter)
 app.use('/api/seed', seedRouter)
 app.use('/api/orders', orderRouter)
-app.use('/api/categories', categoryRouter)
 
 const PORT = 4000
 

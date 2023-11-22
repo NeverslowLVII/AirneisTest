@@ -5,7 +5,6 @@
  */
 
 import { modelOptions, prop, getModelForClass, Ref } from '@typegoose/typegoose'
-import { Category } from './category'
 
 @modelOptions({ schemaOptions: { timestamps: true } })
 export class Product {
@@ -20,8 +19,8 @@ export class Product {
   @prop({ required: true })
   public image!: string
 
-  @prop({ ref: 'Category' })
-  public category!: Ref<Category>
+  @prop({ required: true })
+  public category!: string
 
   @prop({ required: true })
   public description!: string

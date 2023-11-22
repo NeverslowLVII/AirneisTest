@@ -42,7 +42,7 @@ export default function PaymentMethodPage() {
               name="paymentMethod"
               value="Card"
               label="Card"
-              checked
+              checked={paymentMethodName === 'Card'}
               onChange={(e) => setPaymentMethod(e.target.value)}
             />
           </div>
@@ -53,6 +53,7 @@ export default function PaymentMethodPage() {
               name="paymentMethod"
               value="PayPal"
               label="PayPal"
+              checked={paymentMethodName === 'PayPal'}
               onChange={(e) => setPaymentMethod(e.target.value)}
             />
           </div>
