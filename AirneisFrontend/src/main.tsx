@@ -23,6 +23,7 @@ import PaymentMethodPage from './pages/PaymentMethodPage.tsx'
 import ProtectedRoute from './components/ProtectedRoute.tsx'
 import PlaceOrderPage from './pages/PlaceOrderPage.tsx'
 import OrderPage from './pages/OrderPage.tsx'
+import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 
 const router = createBrowserRouter(
   // Création: Router
@@ -67,17 +68,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <StoreProvider>
       {' '}
       {/* // Fournisseur: Store */}
-      <HelmetProvider>
-        {' '}
-        {/* // Fournisseur: Helmet */}
-        <QueryClientProvider client={queryClient}>
-          {' '}
-          {/* // Fournisseur: QueryClient */}
-          <RouterProvider router={router} /> {/* // Fournisseur: Router */}
-          <ReactQueryDevtools initialIsOpen={false} />{' '}
-          {/* // Devtools: ReactQuery */}
-        </QueryClientProvider>
-      </HelmetProvider>
+      <PayPalScriptProvider options={{ 'client-id': 'sb' }} deferLoading={true}>
+        <HelmetProvider>
+          <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router} />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </QueryClientProvider>
+        </HelmetProvider>
+      </PayPalScriptProvider>
     </StoreProvider>
   </React.StrictMode>
 )
