@@ -1,22 +1,16 @@
 {
-  "name": "airneis",
+  "name": "airneistest",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"npm run dev --prefix AirneisBackend\"  \"npm run dev --prefix AirneisFrontend\" ",
-    "build": "cd AirneisBackend && npm install && npm run build  && cd ../AirneisFrontend && npm install && npm run build",
-    "start": "TG_ALLOW_MIXED=ALLOW  node AirneisBackend/build/index.js",
+    "build": "cd AirneisBackend && npm install && npm run build && cd ../AirneisFrontend && npm install && npm run build",
+    "start": "cross-env TG_ALLOW_MIXED=ALLOW node AirneisBackend/build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": ""
   },
   "author": "",
   "license": "ISC",
-  "homepage": "",
-  "devDependencies": {
-    "concurrently": "^8.0.1"
+  "dependencies": {
+    "cross-env": "^7.0.3"
   }
 }
