@@ -150,6 +150,7 @@ export default function PlaceOrderPage() {
                       type="button"
                       onClick={placeOrderHandler}
                       disabled={cart.cartItems.length === 0 || isLoading}
+                      style={{ borderRadius: '100px' }}
                     >
                       Place Order
                     </Button>

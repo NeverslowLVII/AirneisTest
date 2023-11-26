@@ -6,6 +6,7 @@
 
 import { Product } from './models/product'
 import { User } from './models/user'
+import { Category } from './models/category'
 import bcrypt from 'bcryptjs'
 
 export const sampleProducts: Product[] = [
@@ -18,6 +19,7 @@ export const sampleProducts: Product[] = [
     price: 200,
     countInStock: 10,
     description: 'Blue 3 seater sofa',
+    isPriority: false,
   },
   {
     name: 'NESSIE',
@@ -28,6 +30,7 @@ export const sampleProducts: Product[] = [
     price: 150,
     countInStock: 20,
     description: 'Red 2 seater sofa',
+    isPriority: true,
   },
   {
     name: 'THISTLE',
@@ -38,6 +41,7 @@ export const sampleProducts: Product[] = [
     price: 100,
     countInStock: 0,
     description: 'Green 1 seater sofa',
+    isPriority: false,
   },
   {
     name: 'GLEN',
@@ -48,6 +52,7 @@ export const sampleProducts: Product[] = [
     price: 80,
     countInStock: 15,
     description: 'Brown coffee table',
+    isPriority: true,
   },
   {
     name: 'WALLACE',
@@ -59,6 +64,7 @@ export const sampleProducts: Product[] = [
     price: 80,
     countInStock: 15,
     description: 'bookcase with a wooden finish and a metal frame.',
+    isPriority: false,
   },
   {
     name: 'HEATHER',
@@ -69,6 +75,7 @@ export const sampleProducts: Product[] = [
     price: 35,
     countInStock: 0,
     description: 'rug with a woolen texture and a purple colour',
+    isPriority: true,
   },
   {
     name: 'STIRLING',
@@ -80,6 +87,7 @@ export const sampleProducts: Product[] = [
     price: 20,
     countInStock: 15,
     description: 'lamp with glass shade and thin silver base',
+    isPriority: false,
   },
   {
     name: 'SKYE',
@@ -90,6 +98,7 @@ export const sampleProducts: Product[] = [
     price: 200,
     countInStock: 15,
     description: 'wardrobe with a white colour and a mirrored door',
+    isPriority: true,
   },
 ]
 
@@ -111,5 +120,33 @@ export const sampleUsers: User[] = [
     email: 'usertwo@example.com',
     password: bcrypt.hashSync('123456'),
     isAdmin: false,
+  },
+]
+
+export const sampleCategories: Category[] = [
+  {
+    name: 'Lamps',
+    description: 'Collection of various lamps',
+    image: '../public/images/category-lamps.png',
+  },
+  {
+    name: 'Wardrobes',
+    description: 'Collection of various wardrobes',
+  },
+  {
+    name: 'Sofas',
+    description: 'Collection of various sofas',
+  },
+  {
+    name: 'Tables',
+    description: 'Collection of various tables',
+  },
+  {
+    name: 'Bookcases',
+    description: 'Collection of various bookcases',
+  },
+  {
+    name: 'Rugs',
+    description: 'Collection of various rugs',
   },
 ]

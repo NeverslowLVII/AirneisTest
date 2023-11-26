@@ -30,7 +30,13 @@ export default function HomePage() {
       {/* // Boucle sur les produits */}
       {products!.map((product) => (
         // Affichage de chaque produit
-        <Col key={product.slug} sm={6} md={4} lg={3}>
+        <Col
+          key={product.slug}
+          sm={6}
+          md={4}
+          lg={4}
+          style={{ padding: 'calc(var(--bs-gutter-x) * 0.5)' }}
+        >
           <ProductItem product={product} />
         </Col>
       ))}

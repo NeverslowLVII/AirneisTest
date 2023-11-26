@@ -94,7 +94,11 @@ export default function ShippingAdressPage() {
             />
           </Form.Group>
           <div className="mb-3">
-            <Button type="submit" variant="primary">
+            <Button
+              type="submit"
+              variant="primary"
+              style={{ borderRadius: '100px' }}
+            >
               Continue
             </Button>
           </div>

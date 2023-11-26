@@ -63,6 +63,7 @@ export default function CartPage() {
                         onClick={() =>
                           updateCartHandler(item, item.quantity - 1)
                         }
+                        style={{ borderRadius: '100px' }}
                         variant={mode}
                         disabled={item.quantity === 1}
                       >
@@ -75,6 +76,7 @@ export default function CartPage() {
                         onClick={() =>
                           updateCartHandler(item, item.quantity + 1)
                         }
+                        style={{ borderRadius: '100px' }}
                         disabled={item.quantity === item.CountInStock}
                       >
                         <i className="fa-solid fa-plus-circle"></i>
@@ -85,6 +87,7 @@ export default function CartPage() {
                       <Button
                         onClick={() => removeItemHandler(item)}
                         variant={mode}
+                        style={{ borderRadius: '100px' }}
                       >
                         <i className="fa-solid fa-trash-can"></i>
                       </Button>
@@ -113,6 +116,7 @@ export default function CartPage() {
                       className="primary"
                       disabled={cartItems.length === 0}
                       onClick={checkoutHandler}
+                      style={{ borderRadius: '100px' }}
                     >
                       Proceed to Checkout
                     </Button>

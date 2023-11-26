@@ -7,11 +7,11 @@ export class Category {
   @prop({ required: true })
   public name!: string
 
-  @prop({ required: true })
-  public image!: string
+  @prop()
+  public description?: string
 
   @prop({ required: true })
-  public displayOrder!: number
+  public image?: string
 }
 
 export const CategoryModel = getModelForClass(Category)

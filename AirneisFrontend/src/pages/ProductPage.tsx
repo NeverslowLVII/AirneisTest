@@ -62,7 +62,7 @@ export default function ProductPage() {
           {/* // Image du produit */}
           <img className="large" src={product.image} alt={product.name}></img>
         </Col>
-        <Col md={3}>
+        <Col md={3} className="product-cards">
           <ListGroup variant="flush">
             <ListGroup.Item>
               {/* // Titre du produit */}
@@ -110,8 +110,12 @@ export default function ProductPage() {
                   <ListGroup.Item>
                     <div className="d-grid">
                       {/* // Bouton Ajouter au panier */}
-                      <Button onClick={addToCartHandler} variant="primary">
-                        Add to Cart
+                      <Button
+                        onClick={addToCartHandler}
+                        variant="primary"
+                        style={{ borderRadius: '100px' }}
+                      >
+                        <i className="fas fa-cart-plus"></i>
                       </Button>
                     </div>
                   </ListGroup.Item>

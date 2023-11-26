@@ -71,7 +71,11 @@ export default function SigninPage() {
           />
         </Form.Group>
         <div className="mb-3">
-          <Button type="submit" disabled={isLoading}>
+          <Button
+            type="submit"
+            disabled={isLoading}
+            style={{ borderRadius: '100px' }}
+          >
             Sign In
           </Button>
           {isLoading && <LoadingBox />}

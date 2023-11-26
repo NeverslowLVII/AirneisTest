@@ -65,6 +65,7 @@ export default function OrderHistoryPage() {
                     onClick={() => {
                       navigate(`/order/${order._id}`)
                     }}
+                    style={{ borderRadius: '100px' }}
                   >
                     Details
                   </Button>

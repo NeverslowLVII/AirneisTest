@@ -6,6 +6,12 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+a.my-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .product-image {
   max-width: 400px;
   width: 100%;
@@ -36,4 +42,12 @@ img.thumbnail {
 .dropdown-menu[data-bs-popper] {
   left: auto;
   right: 0;
+}
+
+.product-cards {
+  padding: calc(var(--bs-gutter-x) * 0.5);
+}
+
+.bw-filter {
+  filter: grayscale(100%);
 }
