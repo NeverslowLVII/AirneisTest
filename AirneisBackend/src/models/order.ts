@@ -18,10 +18,6 @@ class ShippingAddress {
   public postalCode?: string
   @prop()
   public country?: string
-  @prop()
-  public lat?: number
-  @prop()
-  public lng?: number
 }
 
 class Item {

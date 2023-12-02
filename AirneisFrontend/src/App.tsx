@@ -164,7 +164,6 @@ function App() {
                 className="d-inline-block align-top"
                 style={{ marginRight: '10px', marginLeft: '10px' }}
               />
-              AIRNEIS
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
